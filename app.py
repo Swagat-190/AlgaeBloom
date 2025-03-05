@@ -17,6 +17,9 @@ FISHERMAN_PHONE_NUMBER = "fisherman_phone_number"
 def send_sms(message):
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
     client.messages.create(body=message, from_=TWILIO_PHONE_NUMBER, to=FISHERMAN_PHONE_NUMBER)
+@app.route('/')
+def home():
+    return "Welcome to the HAB Prediction API! Use /predict to send requests."
 
 # API Route for Prediction
 @app.route('/predict', methods=['POST'])
