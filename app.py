@@ -7,11 +7,12 @@ app = Flask(__name__)
 # Load AI Model
 model = joblib.load("HAB_predictor.pkl")
 
-# Twilio Credentials (Replace with actual values)
-TWILIO_SID = "your_twilio_sid"
-TWILIO_AUTH_TOKEN = "your_twilio_auth_token"
-TWILIO_PHONE_NUMBER = "your_twilio_phone_number"
-FISHERMAN_PHONE_NUMBER = "fisherman_phone_number"
+import os
+TWILIO_SID = os.getenv("TWILIO_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
+FISHERMAN_PHONE_NUMBER = os.getenv("FISHERMAN_PHONE_NUMBER")
+
 
 # Function to send SMS alerts
 def send_sms(message):
